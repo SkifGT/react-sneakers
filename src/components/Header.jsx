@@ -1,25 +1,45 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import AppContext from '../context';
 
-function Header() {
+// import { AppContext } from '../App'
+// import { useCart } from '../hooks/useCart';
+
+
+
+function Header({onClickCart}) {
+  const { cartItems } = React.useContext(AppContext);
+  // const { totalPrice } = useCart();
+  const totalPrice = cartItems.reduce((sum, obj)=>obj.price + sum, 0)
+
   return (
     <header className="d-flex justify-between align-center p-40">
-        <div className="d-flex allign-center">
-          <img width={40} height={40} src="/img/logo.png" alt=""/>
-          <div>
-              <h3 className="text-uppercase">React sneakers</h3>
-            <p className="opacity-5">Магазин лучших кроссовок</p>
-          </div>
+      <div className="d-flex allign-center">
+        <Link to="/">
+        <img width={40} height={40} src="/img/logo.png" alt="Logo"/>
+        <div>
+          <h3 className="text-uppercase">React sneakers</h3>
+          <p className="opacity-5">Магазин лучших кроссовок</p>
         </div>
+        </Link>
+      </div>
       <ul className="d-flex">
-        <li className="mr-30">
-          <img width={18} height={18} src="/img/cart.svg" alt=""/>
-          <span>1200 руб</span>
+        <li className="mr-30 cu-p" onClick={onClickCart}>
+          <img width={18} height={18} src="/img/cart.svg" alt="Корзина"/>
+          <span>{totalPrice} руб</span>
+        </li>
+        <li className="mr-20 cu-p">
+          <Link to="/favorites">
+            <img width={18} height={18} src="/img/heart.svg" alt="Избранное"/>
+          </Link>
         </li>
         <li>
-        <img width={18} height={18} src="/img/user.svg" alt=""/>
+        <Link to="/orders">
+          <img width={18} height={18} src="/img/user.svg" alt="Пользователь"/>
+        </Link>  
         </li>
       </ul>
-      </header>
+    </header>
   )
 }
 
