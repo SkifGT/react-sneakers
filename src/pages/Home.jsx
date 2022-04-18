@@ -1,8 +1,6 @@
 import React from 'react'
 
 import Card from '../components/Card'
-// import { AppContext } from '../App'
-
 
 function Home({
     items,
@@ -11,11 +9,10 @@ function Home({
     onAddToCart,
     onAddToFavorit,
     onChangeSearhInput,
-    // cartItems,
     isLoading,
 }) {
 
-  // const { isItemAdded } = React.useContext(AppContext)
+
   const renderItems = () => {
   const filteredItems = items.filter((item)=>
   item.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -25,7 +22,6 @@ return (isLoading ? [...Array(10)] : filteredItems).map((item, index)=> (
       key = { index }
       onFavorit = { (obj)=>onAddToFavorit(obj) }
       onPlus = { (obj)=>onAddToCart(obj) }
-      // added = { isItemAdded(item && item.id) }
       loading = {isLoading}
       {...item}
     />
@@ -38,12 +34,12 @@ return (isLoading ? [...Array(10)] : filteredItems).map((item, index)=> (
       <div className="d-flex align-center mb-40 justify-between">
         <h1>{searchValue ? `Поиск по запросу: ${searchValue}` : 'Все кроссовки'}</h1>
         <div className="search-block">
-          <img width={18} height={18} src="/img/search.svg" alt="Search"/>
+          <img width={18} height={18} src="img/search.svg" alt="Search"/>
           {searchValue && (
           <img 
           onClick = {()=> setSearchValue('')} 
           className="clear cu-p" 
-          src="/img/btn-remove.svg" 
+          src="img/btn-remove.svg" 
           alt="Clear"/>
           )}
           <input onChange={onChangeSearhInput} value = {searchValue} placeholder="Поиск..."/>

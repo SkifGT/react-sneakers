@@ -2,10 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Info from '../Info';
-// import { useCart } from '../../hooks/useCart';
 import AppContext from '../../context';
-
-// import { AppContext } from '../../App'
 
 import styles from './Drawer.module.scss'
 
@@ -16,7 +13,6 @@ function Drawer({onCloseCart, items = [], onRemove, opened}) {
   const [isOrderComplete, setIsOrderComplete] = React.useState(false);
   const [orderId, setOrderId] = React.useState(null);
   const [isLoading, setisLoading] = React.useState(false);
-  // const { cartItems, setCartItems, totalPrice } = useCart();
 
   const { cartItems, setCartItems } = React.useContext(AppContext);
 
@@ -43,11 +39,10 @@ function Drawer({onCloseCart, items = [], onRemove, opened}) {
     setisLoading(false)
   }
 
-
   return (
     <div className={`${styles.overlay} ${opened ?styles.overlayVisible : ''}`}>
       <div className={styles.drawer}>
-        <h2 className="mb-30 d-flex justify-between">Корзина <img onClick={onCloseCart} className="cu-p" src="/img/btn-remove.svg" alt="Close"/>
+        <h2 className="mb-30 d-flex justify-between">Корзина <img onClick={onCloseCart} className="cu-p" src="img/btn-remove.svg" alt="Close"/>
         </h2>
         {items.length > 0 ? 
           (<div className="d-flex flex-column flex">  
@@ -65,7 +60,7 @@ function Drawer({onCloseCart, items = [], onRemove, opened}) {
                 <img 
                   className="removeBtn" 
                   onClick={() => onRemove(obj.id)} 
-                  src="/img/btn-remove.svg" 
+                  src="img/btn-remove.svg" 
                   alt="Remove"
                 />
               </div>
@@ -84,14 +79,14 @@ function Drawer({onCloseCart, items = [], onRemove, opened}) {
                   <b>{totalPrice*0.08} руб</b>
                 </li>
               </ul>
-              <button disabled = {isLoading} onClick = {onClickOrder} className="greenButton">Оформить заказ<img src="/img/arrow.svg" alt="Arrow" /></button>
+              <button disabled = {isLoading} onClick = {onClickOrder} className="greenButton">Оформить заказ<img src="img/arrow.svg" alt="Arrow" /></button>
             </div>
           </div> )
         :
         (<Info 
           title={isOrderComplete ? "Заказ оформлен" : "Корзина пустая"} 
           description={isOrderComplete ? `Ваш заказ № ${orderId} скоро будет передан курьерской службе` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ"} 
-          image={isOrderComplete ? "/img/complete-order.jpg" : "/img/empty-cart.jpg" } 
+          image={isOrderComplete ? "img/complete-order.jpg" : "img/empty-cart.jpg" } 
         />
         )}
       </div>

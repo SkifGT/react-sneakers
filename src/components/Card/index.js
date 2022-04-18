@@ -48,7 +48,7 @@ const onClickFavorit = () => {
       ) : (
         <>{onFavorit && (
           <div className={styles.favorit} onClick={onClickFavorit}>
-              <img src={isLiked ? "/img/liked.svg" : "/img/unliked.svg"} alt="Unliked"/>
+              <img src={isLiked ? "img/liked.svg" : "img/unliked.svg"} alt="Unliked"/>
           </div>
         )}
           <img width={133} height={112} src={imageUrl} alt="Sneakers"/>
@@ -63,8 +63,8 @@ const onClickFavorit = () => {
                 className={styles.plus} 
                 onClick={onClickPlus} 
                 src={isItemAdded(id) ? 
-                  "/img/btn-checked.svg" : 
-                  "/img/btn-plus.svg"} 
+                  "img/btn-checked.svg" : 
+                  "img/btn-plus.svg"} 
                 alt= "Plus"
               />
             )}

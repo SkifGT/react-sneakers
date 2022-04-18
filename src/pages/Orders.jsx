@@ -31,10 +31,7 @@ React.useEffect(()=>{
       .map((item, index)=> 
       (<Card
           key = { index }
-          // onFavorit = { (obj)=>onAddToFavorit(obj) }
-          // onPlus = { (obj)=>onAddToCart(obj) }
-          // added = { isItemAdded(item && item.id) }
-      loading = {isLoading}
+          loading = {isLoading}
           {...item}
         />))}
       </div>

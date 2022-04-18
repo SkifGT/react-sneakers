@@ -116,9 +116,9 @@ function App() {
         />
         <Header onClickCart = {() => setCartOpened(true)}/>
         <Routes>
-          <Route path="/favorites" element = {<Favorites/>}></Route>
-          <Route path="/orders" element = {<Orders/>}></Route>
-          <Route path="/" element = {
+          <Route path={process.env.PUBLIC_URL + '/favorites'} element = {<Favorites/>}></Route>
+          <Route path={process.env.PUBLIC_URL + '/orders'} element = {<Orders/>}></Route>
+          <Route path={process.env.PUBLIC_URL + '/'} element = {
             <Home 
                 cartItems ={cartItems}
                 items={items} 
